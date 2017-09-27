@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
 using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Excel;
+using System.Windows.Forms;
 
 namespace ExcelCSX
 {
@@ -13,12 +14,26 @@ namespace ExcelCSX
     {
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            Core.Config = Config.Load();
+            try
+            {
+                Core.Config = Config.Load();
+            }
+            catch { Logging("startup失敗"); }
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
         {
-            Core.Config.Save();
+            try
+            {
+                Core.Config.Save();
+
+            }
+            catch { Logging("shutdown失敗"); }
+        }
+
+        private void Logging(string v)
+        {
+            MessageBox.Show(v);
         }
 
         #region VSTO で生成されたコード
