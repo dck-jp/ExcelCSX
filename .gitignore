@@ -205,3 +205,4 @@ $RECYCLE.BIN/
 *.diagsession
 
 .vs/
+packages/
