@@ -23,6 +23,7 @@ namespace ExcelCSX
                 try
                 {
                     var ssr = ScriptSourceResolver.Default.WithBaseDirectory(Core.Config.CurrentFolderPath);
+                    var smr = ScriptMetadataResolver.Default.WithBaseDirectory(Core.Config.CurrentFolderPath);
                     var options = ScriptOptions.Default
                                          .AddReferences(
                                              Assembly.GetAssembly(typeof(System.Dynamic.DynamicObject)),  // System.Code
@@ -30,7 +31,8 @@ namespace ExcelCSX
                                              Assembly.GetAssembly(typeof(System.Dynamic.ExpandoObject)) // System.Dynamic
                                          )
                                          .AddImports("System.Dynamic")
-                                         .WithSourceResolver(ssr);
+                                         .WithSourceResolver(ssr)
+                                         .WithMetadataResolver(smr);
 
                     var script = CSharpScript.Create(ScriptCode, options, typeof(DynamicExcel));
                     var x = script.RunAsync(new DynamicExcel { Excel = excel });
