@@ -82,9 +82,19 @@ namespace ExcelCSX
         /// <param name="e"></param>
         private async void buttonRun_Click(object sender, RibbonControlEventArgs e)
         {
-            buttonRun.Enabled = false;
-
             var path = GetSelectedItemPath();
+            RunScript(path);
+        }
+
+        /// <summary>
+        /// 指定したスクリプトを実行する
+        /// </summary>
+        /// <param name="path"></param>
+        private async void RunScript(string path)
+        {
+            buttonRun.Enabled = false;
+            groupShortcut.Items.ToList().ForEach(item => item.Enabled = false);
+            
             if (!File.Exists(path))
             {
                 MessageBox.Show($"{path} is not exists!");
@@ -97,6 +107,7 @@ namespace ExcelCSX
             var errorMessage = await cs.Execute(excel);
             if (errorMessage != "") MessageBox.Show(errorMessage);
 
+            groupShortcut.Items.ToList().ForEach(item => item.Enabled = true);
             buttonRun.Enabled = true;
         }
 
@@ -183,25 +194,10 @@ namespace ExcelCSX
                     buttonRun.Label = button.DisplayName;
                     buttonRun.ShowImage = true;
                     buttonRun.Click += new RibbonControlEventHandler(async (_, __) => {
-                        buttonRun.Enabled = false;
-                        groupShortcut.Items.ToList().ForEach(item => item.Enabled = false);
-
                         var path = button.ScriptPath;
-                        if (!File.Exists(path))
-                        {
-                            MessageBox.Show($"{path} is not exists!");
-                            return; //フォルダ選択→実行までの間に削除された場合
-                        }
-
-                        var code = File.ReadAllText(path);
-                        var cs = new CsScript(code);
-                        var excel = Globals.ThisAddIn.Application;
-                        var errorMessage = await cs.Execute(excel);
-                        if (errorMessage != "") MessageBox.Show(errorMessage);
-
-                        groupShortcut.Items.ToList().ForEach(item => item.Enabled = true);
-                        buttonRun.Enabled = true;
+                        RunScript(path);
                     });
+                    buttonRun.Visible = true;
                 }
                 else
                 {
