@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -28,7 +29,10 @@ namespace ExcelCSX
         /// ユーザが指定したデフォルトフォルダ
         /// </summary>
         public string UserDefinedFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-
+        /// <summary>
+        /// ショートカットボタンの設定
+        /// </summary>
+        public List<ButtonConfig> ShortcutButtons = new List<ButtonConfig>();
 
         #region for developer
         /// <summary>
@@ -70,6 +74,13 @@ namespace ExcelCSX
             }
         }
         #endregion
+    }
+
+    [Serializable]
+    public class ButtonConfig
+    {
+        public string DisplayName { get; set; }
+        public string ScriptPath { get; set; }
     }
 
     static class Files

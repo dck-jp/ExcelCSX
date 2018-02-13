@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 using System.Deployment;
+using System.Linq;
 
 namespace ExcelCSX
 {
@@ -15,6 +16,10 @@ namespace ExcelCSX
             metroTextBoxArg.Text = Core.Config.EditorArgument;
             metroRadioButtonUseLastFolder.Checked = Core.Config.UseLastFolder;
             metroTextBoxFolderPath.Text = Core.Config.UserDefinedFolderPath;
+
+            Core.Config.ShortcutButtons.ForEach(x => {
+                metroListViewShortcutButtons.Items.Add(new ListViewItem(new[] { x.DisplayName, x.ScriptPath });
+            });
         }
 
         private void metroTextButtonBroseEditor_Click(object sender, EventArgs e)
@@ -56,6 +61,15 @@ namespace ExcelCSX
             Core.Config.EditorArgument = metroTextBoxArg.Text;
             Core.Config.UserDefinedFolderPath = metroTextBoxFolderPath.Text;
             Core.Config.UseLastFolder = metroRadioButtonUseLastFolder.Checked;
+
+            Core.Config.ShortcutButtons = metroListViewShortcutButtons.Items
+                                                .Cast<ListViewItem>().Select(x => {
+                                                    var b = new ButtonConfig();
+                                                    b.DisplayName = x.Text;
+                                                    b.ScriptPath = x.SubItems[0].Text;
+                                                    return b;
+                                                }).ToList();
+
             Close();
         }
 
@@ -63,5 +77,28 @@ namespace ExcelCSX
         {
             Close();
         }
+
+        private void metroTextButtonAddButton_Click(object sender, EventArgs e)
+        {
+            var dialog = new OpenFileDialog();
+            dialog.Title = "Choose the csx script file";
+            dialog.Filter = "C# Script File (*.csx)|*.csx";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                metroListViewShortcutButtons.Items.Add(new ListViewItem(new[] { "", dialog.FileName }));
+            }
     }
-}
+
+        private void metroTextButtonDeleteButton_Click(object sender, EventArgs e)
+        {
+            if (metroListViewShortcutButtons.SelectedIndices.Count == 0)
+            {
+                MessageBox.Show("No item selected");
+                return;
+            }
+            foreach (ListViewItem item in metroListViewShortcutButtons.SelectedItems)
+            {
+                metroListViewShortcutButtons.Items.Remove(item);
+            }
+        }
+    }

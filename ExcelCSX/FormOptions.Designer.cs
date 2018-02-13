@@ -43,14 +43,22 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.metroCheckBoxUseFolderPath = new MetroFramework.Controls.MetroCheckBox();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.metroTextBoxArg = new MetroFramework.Controls.MetroTextBox();
             this.metroLinkURL = new MetroFramework.Controls.MetroLink();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabelVer = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBoxArg = new MetroFramework.Controls.MetroTextBox();
-            this.metroCheckBoxUseFolderPath = new MetroFramework.Controls.MetroCheckBox();
+            this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.metroTextButtonAddButton = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.metroTextButtonDeleteButton = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.metroListViewShortcutButtons = new MetroFramework.Controls.MetroListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.metroPanel1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
+            this.metroPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -87,6 +95,7 @@
             this.metroTextBoxEditorPath.SelectedText = "";
             this.metroTextBoxEditorPath.SelectionLength = 0;
             this.metroTextBoxEditorPath.SelectionStart = 0;
+            this.metroTextBoxEditorPath.ShortcutsEnabled = true;
             this.metroTextBoxEditorPath.Size = new System.Drawing.Size(364, 23);
             this.metroTextBoxEditorPath.TabIndex = 1;
             this.metroTextBoxEditorPath.UseSelectable = true;
@@ -119,17 +128,18 @@
             // 
             // metroTextButtonSave
             // 
-            this.metroTextButtonSave.BackColor = System.Drawing.Color.Transparent;
+            this.metroTextButtonSave.BackColor = System.Drawing.Color.White;
             this.metroTextButtonSave.FlatAppearance.BorderSize = 0;
+            this.metroTextButtonSave.ForeColor = System.Drawing.SystemColors.ControlText;
             this.metroTextButtonSave.Image = ((System.Drawing.Image)(resources.GetObject("metroTextButtonSave.Image")));
             this.metroTextButtonSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.metroTextButtonSave.Location = new System.Drawing.Point(24, 465);
+            this.metroTextButtonSave.Location = new System.Drawing.Point(238, 714);
             this.metroTextButtonSave.Name = "metroTextButtonSave";
-            this.metroTextButtonSave.Size = new System.Drawing.Size(99, 30);
+            this.metroTextButtonSave.Size = new System.Drawing.Size(137, 30);
             this.metroTextButtonSave.TabIndex = 4;
             this.metroTextButtonSave.Text = "Save";
             this.metroTextButtonSave.UseSelectable = true;
-            this.metroTextButtonSave.UseVisualStyleBackColor = false;
+            this.metroTextButtonSave.UseVisualStyleBackColor = true;
             this.metroTextButtonSave.Click += new System.EventHandler(this.metroTextButtonSave_Click);
             // 
             // metroTextButtonCancel
@@ -138,9 +148,9 @@
             this.metroTextButtonCancel.FlatAppearance.BorderSize = 0;
             this.metroTextButtonCancel.Image = ((System.Drawing.Image)(resources.GetObject("metroTextButtonCancel.Image")));
             this.metroTextButtonCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.metroTextButtonCancel.Location = new System.Drawing.Point(129, 465);
+            this.metroTextButtonCancel.Location = new System.Drawing.Point(381, 714);
             this.metroTextButtonCancel.Name = "metroTextButtonCancel";
-            this.metroTextButtonCancel.Size = new System.Drawing.Size(99, 30);
+            this.metroTextButtonCancel.Size = new System.Drawing.Size(137, 30);
             this.metroTextButtonCancel.TabIndex = 4;
             this.metroTextButtonCancel.Text = "Cancel";
             this.metroTextButtonCancel.UseSelectable = true;
@@ -181,6 +191,7 @@
             this.metroTextBoxFolderPath.SelectedText = "";
             this.metroTextBoxFolderPath.SelectionLength = 0;
             this.metroTextBoxFolderPath.SelectionStart = 0;
+            this.metroTextBoxFolderPath.ShortcutsEnabled = true;
             this.metroTextBoxFolderPath.Size = new System.Drawing.Size(364, 23);
             this.metroTextBoxFolderPath.TabIndex = 1;
             this.metroTextBoxFolderPath.UseSelectable = true;
@@ -272,32 +283,16 @@
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
             // 
-            // metroLinkURL
+            // metroCheckBoxUseFolderPath
             // 
-            this.metroLinkURL.Location = new System.Drawing.Point(342, 404);
-            this.metroLinkURL.Name = "metroLinkURL";
-            this.metroLinkURL.Size = new System.Drawing.Size(176, 23);
-            this.metroLinkURL.TabIndex = 8;
-            this.metroLinkURL.Text = "http://www.clockahead.com/";
-            this.metroLinkURL.UseSelectable = true;
-            // 
-            // metroLabel5
-            // 
-            this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(326, 363);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(192, 19);
-            this.metroLabel5.TabIndex = 9;
-            this.metroLabel5.Text = "ExcelCSX (C Sharp Script)";
-            // 
-            // metroLabelVer
-            // 
-            this.metroLabelVer.AutoSize = true;
-            this.metroLabelVer.Location = new System.Drawing.Point(326, 382);
-            this.metroLabelVer.Name = "metroLabelVer";
-            this.metroLabelVer.Size = new System.Drawing.Size(40, 19);
-            this.metroLabelVer.TabIndex = 9;
-            this.metroLabelVer.Text = "Ver. β";
+            this.metroCheckBoxUseFolderPath.AutoSize = true;
+            this.metroCheckBoxUseFolderPath.Location = new System.Drawing.Point(9, 121);
+            this.metroCheckBoxUseFolderPath.Name = "metroCheckBoxUseFolderPath";
+            this.metroCheckBoxUseFolderPath.Size = new System.Drawing.Size(360, 15);
+            this.metroCheckBoxUseFolderPath.TabIndex = 4;
+            this.metroCheckBoxUseFolderPath.Text = "Use a folder path instead of a C# Script file path passed to Editor";
+            this.metroCheckBoxUseFolderPath.UseSelectable = true;
+            this.metroCheckBoxUseFolderPath.Visible = false;
             // 
             // metroLabel6
             // 
@@ -332,33 +327,133 @@
             this.metroTextBoxArg.SelectedText = "";
             this.metroTextBoxArg.SelectionLength = 0;
             this.metroTextBoxArg.SelectionStart = 0;
+            this.metroTextBoxArg.ShortcutsEnabled = true;
             this.metroTextBoxArg.Size = new System.Drawing.Size(137, 23);
             this.metroTextBoxArg.TabIndex = 1;
             this.metroTextBoxArg.UseSelectable = true;
             this.metroTextBoxArg.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBoxArg.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // metroCheckBoxUseFolderPath
+            // metroLinkURL
             // 
-            this.metroCheckBoxUseFolderPath.AutoSize = true;
-            this.metroCheckBoxUseFolderPath.Location = new System.Drawing.Point(9, 121);
-            this.metroCheckBoxUseFolderPath.Name = "metroCheckBoxUseFolderPath";
-            this.metroCheckBoxUseFolderPath.Size = new System.Drawing.Size(360, 15);
-            this.metroCheckBoxUseFolderPath.TabIndex = 4;
-            this.metroCheckBoxUseFolderPath.Text = "Use a folder path instead of a C# Script file path passed to Editor";
-            this.metroCheckBoxUseFolderPath.UseSelectable = true;
-            this.metroCheckBoxUseFolderPath.Visible = false;
+            this.metroLinkURL.Location = new System.Drawing.Point(342, 659);
+            this.metroLinkURL.Name = "metroLinkURL";
+            this.metroLinkURL.Size = new System.Drawing.Size(176, 23);
+            this.metroLinkURL.TabIndex = 8;
+            this.metroLinkURL.Text = "http://www.clockahead.com/";
+            this.metroLinkURL.UseSelectable = true;
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(326, 618);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(158, 19);
+            this.metroLabel5.TabIndex = 9;
+            this.metroLabel5.Text = "ExcelCSX (C Sharp Script)";
+            // 
+            // metroLabelVer
+            // 
+            this.metroLabelVer.AutoSize = true;
+            this.metroLabelVer.Location = new System.Drawing.Point(326, 637);
+            this.metroLabelVer.Name = "metroLabelVer";
+            this.metroLabelVer.Size = new System.Drawing.Size(40, 19);
+            this.metroLabelVer.TabIndex = 9;
+            this.metroLabelVer.Text = "Ver. β";
+            // 
+            // metroPanel3
+            // 
+            this.metroPanel3.Controls.Add(this.metroListViewShortcutButtons);
+            this.metroPanel3.Controls.Add(this.metroTextButtonDeleteButton);
+            this.metroPanel3.Controls.Add(this.metroLabel8);
+            this.metroPanel3.Controls.Add(this.metroTextButtonAddButton);
+            this.metroPanel3.HorizontalScrollbarBarColor = true;
+            this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel3.HorizontalScrollbarSize = 10;
+            this.metroPanel3.Location = new System.Drawing.Point(17, 354);
+            this.metroPanel3.Name = "metroPanel3";
+            this.metroPanel3.Size = new System.Drawing.Size(501, 261);
+            this.metroPanel3.TabIndex = 6;
+            this.metroPanel3.UseStyleColors = true;
+            this.metroPanel3.VerticalScrollbarBarColor = true;
+            this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel3.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel8.Location = new System.Drawing.Point(3, 0);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(137, 25);
+            this.metroLabel8.TabIndex = 0;
+            this.metroLabel8.Text = "Shortcut Button";
+            // 
+            // metroTextButtonAddButton
+            // 
+            this.metroTextButtonAddButton.Image = null;
+            this.metroTextButtonAddButton.Location = new System.Drawing.Point(377, 28);
+            this.metroTextButtonAddButton.Name = "metroTextButtonAddButton";
+            this.metroTextButtonAddButton.Size = new System.Drawing.Size(109, 23);
+            this.metroTextButtonAddButton.TabIndex = 2;
+            this.metroTextButtonAddButton.Text = "Add";
+            this.metroTextButtonAddButton.UseSelectable = true;
+            this.metroTextButtonAddButton.UseVisualStyleBackColor = true;
+            this.metroTextButtonAddButton.Click += new System.EventHandler(this.metroTextButtonAddButton_Click);
+            // 
+            // metroTextButtonDeleteButton
+            // 
+            this.metroTextButtonDeleteButton.Image = null;
+            this.metroTextButtonDeleteButton.Location = new System.Drawing.Point(377, 57);
+            this.metroTextButtonDeleteButton.Name = "metroTextButtonDeleteButton";
+            this.metroTextButtonDeleteButton.Size = new System.Drawing.Size(109, 23);
+            this.metroTextButtonDeleteButton.TabIndex = 5;
+            this.metroTextButtonDeleteButton.Text = "Delete";
+            this.metroTextButtonDeleteButton.UseSelectable = true;
+            this.metroTextButtonDeleteButton.UseVisualStyleBackColor = true;
+            this.metroTextButtonDeleteButton.Click += new System.EventHandler(this.metroTextButtonDeleteButton_Click);
+            // 
+            // metroListViewShortcutButtons
+            // 
+            this.metroListViewShortcutButtons.AllowSorting = true;
+            this.metroListViewShortcutButtons.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.metroListViewShortcutButtons.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.metroListViewShortcutButtons.FullRowSelect = true;
+            this.metroListViewShortcutButtons.GridLines = true;
+            this.metroListViewShortcutButtons.LabelEdit = true;
+            this.metroListViewShortcutButtons.Location = new System.Drawing.Point(7, 29);
+            this.metroListViewShortcutButtons.Name = "metroListViewShortcutButtons";
+            this.metroListViewShortcutButtons.OwnerDraw = true;
+            this.metroListViewShortcutButtons.Size = new System.Drawing.Size(364, 220);
+            this.metroListViewShortcutButtons.TabIndex = 6;
+            this.metroListViewShortcutButtons.UseCompatibleStateImageBehavior = false;
+            this.metroListViewShortcutButtons.UseSelectable = true;
+            this.metroListViewShortcutButtons.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "DisplayName";
+            this.columnHeader1.Width = 139;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "ScriptPath";
+            this.columnHeader2.Width = 191;
             // 
             // FormOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(541, 518);
+            this.ClientSize = new System.Drawing.Size(541, 767);
             this.Controls.Add(this.metroLabelVer);
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.metroLinkURL);
             this.Controls.Add(this.metroPanel2);
+            this.Controls.Add(this.metroPanel3);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.metroTextButtonCancel);
             this.Controls.Add(this.metroTextButtonSave);
@@ -373,6 +468,8 @@
             this.metroPanel1.PerformLayout();
             this.metroPanel2.ResumeLayout(false);
             this.metroPanel2.PerformLayout();
+            this.metroPanel3.ResumeLayout(false);
+            this.metroPanel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,5 +497,12 @@
         private MetroFramework.Controls.MetroCheckBox metroCheckBoxUseFolderPath;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroTextBox metroTextBoxArg;
+        private MetroFramework.Controls.MetroPanel metroPanel3;
+        private MetroFramework.Controls.MetroTextBox.MetroTextButton metroTextButtonDeleteButton;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private MetroFramework.Controls.MetroTextBox.MetroTextButton metroTextButtonAddButton;
+        private MetroFramework.Controls.MetroListView metroListViewShortcutButtons;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }
