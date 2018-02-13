@@ -44,14 +44,23 @@
             this.buttonReload = this.Factory.CreateRibbonButton();
             this.buttonEdit = this.Factory.CreateRibbonButton();
             this.buttonRun = this.Factory.CreateRibbonButton();
+            this.groupShortcut = this.Factory.CreateRibbonGroup();
+            this.button1 = this.Factory.CreateRibbonButton();
+            this.button2 = this.Factory.CreateRibbonButton();
+            this.button3 = this.Factory.CreateRibbonButton();
+            this.button4 = this.Factory.CreateRibbonButton();
+            this.button5 = this.Factory.CreateRibbonButton();
+            this.button6 = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
+            this.groupShortcut.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab1
             // 
             this.tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
             this.tab1.Groups.Add(this.group1);
+            this.tab1.Groups.Add(this.groupShortcut);
             this.tab1.Label = "TabAddIns";
             this.tab1.Name = "tab1";
             // 
@@ -125,6 +134,47 @@
             this.buttonRun.ShowImage = true;
             this.buttonRun.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonRun_Click);
             // 
+            // groupShortcut
+            // 
+            this.groupShortcut.Items.Add(this.button1);
+            this.groupShortcut.Items.Add(this.button2);
+            this.groupShortcut.Items.Add(this.button3);
+            this.groupShortcut.Items.Add(this.button4);
+            this.groupShortcut.Items.Add(this.button5);
+            this.groupShortcut.Items.Add(this.button6);
+            this.groupShortcut.Label = "Shortcut";
+            this.groupShortcut.Name = "groupShortcut";
+            // 
+            // button1
+            // 
+            this.button1.Label = "button1";
+            this.button1.Name = "button1";
+            // 
+            // button2
+            // 
+            this.button2.Label = "button1";
+            this.button2.Name = "button2";
+            // 
+            // button3
+            // 
+            this.button3.Label = "button1";
+            this.button3.Name = "button3";
+            // 
+            // button4
+            // 
+            this.button4.Label = "button1";
+            this.button4.Name = "button4";
+            // 
+            // button5
+            // 
+            this.button5.Label = "button1";
+            this.button5.Name = "button5";
+            // 
+            // button6
+            // 
+            this.button6.Label = "button1";
+            this.button6.Name = "button6";
+            // 
             // Ribbon
             // 
             this.Name = "Ribbon";
@@ -135,6 +185,8 @@
             this.tab1.PerformLayout();
             this.group1.ResumeLayout(false);
             this.group1.PerformLayout();
+            this.groupShortcut.ResumeLayout(false);
+            this.groupShortcut.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -150,6 +202,13 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonReload;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonEdit;
         internal Microsoft.Office.Tools.Ribbon.RibbonDropDown dropDownScriptFile;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup groupShortcut;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button3;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button4;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button5;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button6;
     }
 
     partial class ThisRibbonCollection

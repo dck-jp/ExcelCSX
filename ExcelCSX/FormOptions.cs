@@ -17,8 +17,9 @@ namespace ExcelCSX
             metroRadioButtonUseLastFolder.Checked = Core.Config.UseLastFolder;
             metroTextBoxFolderPath.Text = Core.Config.UserDefinedFolderPath;
 
-            Core.Config.ShortcutButtons.ForEach(x => {
-                metroListViewShortcutButtons.Items.Add(new ListViewItem(new[] { x.DisplayName, x.ScriptPath });
+            Core.Config.ShortcutButtons.ForEach(x =>
+            {
+                metroListViewShortcutButtons.Items.Add(new ListViewItem(new[] { x.DisplayName, x.ScriptPath }));
             });
         }
 
@@ -63,10 +64,11 @@ namespace ExcelCSX
             Core.Config.UseLastFolder = metroRadioButtonUseLastFolder.Checked;
 
             Core.Config.ShortcutButtons = metroListViewShortcutButtons.Items
-                                                .Cast<ListViewItem>().Select(x => {
+                                                .Cast<ListViewItem>().Select(x =>
+                                                {
                                                     var b = new ButtonConfig();
-                                                    b.DisplayName = x.Text;
-                                                    b.ScriptPath = x.SubItems[0].Text;
+                                                    b.DisplayName = x.SubItems[0].Text;
+                                                    b.ScriptPath = x.SubItems[1].Text;
                                                     return b;
                                                 }).ToList();
 
@@ -87,7 +89,7 @@ namespace ExcelCSX
             {
                 metroListViewShortcutButtons.Items.Add(new ListViewItem(new[] { "", dialog.FileName }));
             }
-    }
+        }
 
         private void metroTextButtonDeleteButton_Click(object sender, EventArgs e)
         {
@@ -102,3 +104,4 @@ namespace ExcelCSX
             }
         }
     }
+}

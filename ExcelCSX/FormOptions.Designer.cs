@@ -421,7 +421,6 @@
             this.columnHeader1,
             this.columnHeader2});
             this.metroListViewShortcutButtons.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.metroListViewShortcutButtons.FullRowSelect = true;
             this.metroListViewShortcutButtons.GridLines = true;
             this.metroListViewShortcutButtons.LabelEdit = true;
             this.metroListViewShortcutButtons.Location = new System.Drawing.Point(7, 29);

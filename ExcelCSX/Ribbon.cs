@@ -13,13 +13,22 @@ namespace ExcelCSX
     {
         private void Ribbon_Load(object sender, RibbonUIEventArgs e)
         {
-            if (Core.Config.UseLastFolder)
+            try
             {
-                SetDropDownList(Core.Config.CurrentFolderPath);
+                if (Core.Config.UseLastFolder)
+                {
+                    SetDropDownList(Core.Config.CurrentFolderPath);
+                }
+                else
+                {
+                    SetDropDownList(Core.Config.UserDefinedFolderPath);
+                }
+
+                AddShortcutButtons(Core.Config.ShortcutButtons);
             }
-            else
+            catch (Exception ex)
             {
-                SetDropDownList(Core.Config.UserDefinedFolderPath);
+                //想定外のエラー
             }
         }
 
@@ -154,6 +163,53 @@ namespace ExcelCSX
         {
             var form = new FormOptions();
             form.ShowDialog();
+
+            AddShortcutButtons(Core.Config.ShortcutButtons);
         }
+
+        public void AddShortcutButtons(List<ButtonConfig> buttonConfigs)
+        {
+            var ribbonButtons = new[] { button1, button2, button3, button4, button5, button6 };
+            var resources = new System.ComponentModel.ComponentResourceManager(typeof(Ribbon));
+
+            for(var i = 0; i<6;i++)
+            {
+                var buttonRun = ribbonButtons[i];
+                if (buttonConfigs.Count > i)
+                {
+                    var button = buttonConfigs[i];
+                    buttonRun.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeRegular;
+                    buttonRun.Image = ((System.Drawing.Image)(resources.GetObject("buttonRun.Image")));
+                    buttonRun.Label = button.DisplayName;
+                    buttonRun.ShowImage = true;
+                    buttonRun.Click += new RibbonControlEventHandler(async (_, __) => {
+                        buttonRun.Enabled = false;
+                        groupShortcut.Items.ToList().ForEach(item => item.Enabled = false);
+
+                        var path = button.ScriptPath;
+                        if (!File.Exists(path))
+                        {
+                            MessageBox.Show($"{path} is not exists!");
+                            return; //フォルダ選択→実行までの間に削除された場合
+                        }
+
+                        var code = File.ReadAllText(path);
+                        var cs = new CsScript(code);
+                        var excel = Globals.ThisAddIn.Application;
+                        var errorMessage = await cs.Execute(excel);
+                        if (errorMessage != "") MessageBox.Show(errorMessage);
+
+                        groupShortcut.Items.ToList().ForEach(item => item.Enabled = true);
+                        buttonRun.Enabled = true;
+                    });
+                }
+                else
+                {
+                    buttonRun.Visible = false;
+                }
+
+            }
+        }
+
     }
 }
