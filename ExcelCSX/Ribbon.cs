@@ -28,6 +28,7 @@ namespace ExcelCSX
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 //想定外のエラー
             }
         }
