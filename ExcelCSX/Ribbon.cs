@@ -6,12 +6,23 @@ using Microsoft.Office.Tools.Ribbon;
 using System.IO;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace ExcelCSX
 {
     public partial class Ribbon
     {
         private void Ribbon_Load(object sender, RibbonUIEventArgs e)
+        {
+            Task.Run(() =>
+            {
+                Thread.Sleep(2000);
+                this.Ribbon_Loaded();
+            });
+        }
+
+        private void Ribbon_Loaded()
         {
             try
             {
@@ -23,13 +34,11 @@ namespace ExcelCSX
                 {
                     SetDropDownList(Core.Config.UserDefinedFolderPath);
                 }
-
                 AddShortcutButtons(Core.Config.ShortcutButtons);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-                //想定外のエラー
             }
         }
 

@@ -15,6 +15,7 @@ namespace ExcelCSX
             metroTextBoxEditorPath.Text = Core.Config.EditorPath;
             metroTextBoxArg.Text = Core.Config.EditorArgument;
             metroRadioButtonUseLastFolder.Checked = Core.Config.UseLastFolder;
+            metroRadioButtonUseUserDefinedFolder.Checked = !Core.Config.UseLastFolder;
             metroTextBoxFolderPath.Text = Core.Config.UserDefinedFolderPath;
 
             Core.Config.ShortcutButtons.ForEach(x =>
