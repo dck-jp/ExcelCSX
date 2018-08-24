@@ -42,7 +42,7 @@ namespace ExcelCSX
         /// </summary>
         private static string ConfigFilePath
         {
-            get { return Application.UserAppDataPath + "\\ExcelCSX.xml"; }
+            get { return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\ExcelCSX\ExcelCSX.xml"; }
         }
         /// <summary>
         /// Config.xmlファイルの保存

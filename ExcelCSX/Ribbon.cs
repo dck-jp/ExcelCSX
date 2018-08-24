@@ -26,14 +26,18 @@ namespace ExcelCSX
         {
             try
             {
+                var folderPath = "";
                 if (Core.Config.UseLastFolder)
                 {
-                    SetDropDownList(Core.Config.CurrentFolderPath);
+                    folderPath = Core.Config.CurrentFolderPath;
                 }
                 else
                 {
-                    SetDropDownList(Core.Config.UserDefinedFolderPath);
+                    folderPath = Core.Config.UserDefinedFolderPath;
                 }
+
+                SetDropDownList(folderPath);
+                SetCurrentFolder(folderPath);
                 AddShortcutButtons(Core.Config.ShortcutButtons);
             }
             catch (Exception ex)
@@ -55,8 +59,18 @@ namespace ExcelCSX
             if (dialog.ShowDialog(IntPtr.Zero))
             {
                 SetDropDownList(dialog.FileName); //FileNameという名称だが、実体はフォルダPath
-                Core.Config.CurrentFolderPath = dialog.FileName;
+                SetCurrentFolder(dialog.FileName);
             }
+        }
+
+        /// <summary>
+        /// カレントフォルダを設定（Config書き換え）
+        /// </summary>
+        /// <param name="fileName"></param>
+        private void SetCurrentFolder(string folderPath)
+        {
+            Environment.CurrentDirectory = folderPath;
+            Core.Config.CurrentFolderPath = folderPath;
         }
 
         /// <summary>
@@ -76,13 +90,6 @@ namespace ExcelCSX
                 item.ScreenTip = file; //フルパスをScreentipに
                 dropDownScriptFile.Items.Add(item);
             });
-
-            SetCurrentDirectry();
-        }
-
-        private void SetCurrentDirectry()
-        {
-            Environment.CurrentDirectory = Core.Config.CurrentFolderPath;
         }
 
         /// <summary>
@@ -90,7 +97,7 @@ namespace ExcelCSX
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void buttonRun_Click(object sender, RibbonControlEventArgs e)
+        private void buttonRun_Click(object sender, RibbonControlEventArgs e)
         {
             var path = GetSelectedItemPath();
             RunScript(path);
@@ -190,10 +197,10 @@ namespace ExcelCSX
 
         public void AddShortcutButtons(List<ButtonConfig> buttonConfigs)
         {
-            var ribbonButtons = new[] { button1, button2, button3, button4, button5, button6 };
+            var ribbonButtons = new[] { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
             var resources = new System.ComponentModel.ComponentResourceManager(typeof(Ribbon));
 
-            for(var i = 0; i<6;i++)
+            for(var i = 0; i<ribbonButtons.Length;i++)
             {
                 var buttonRun = ribbonButtons[i];
                 if (buttonConfigs.Count > i)
@@ -203,7 +210,7 @@ namespace ExcelCSX
                     buttonRun.Image = ((System.Drawing.Image)(resources.GetObject("buttonRun.Image")));
                     buttonRun.Label = button.DisplayName;
                     buttonRun.ShowImage = true;
-                    buttonRun.Click += new RibbonControlEventHandler(async (_, __) => {
+                    buttonRun.Click += new RibbonControlEventHandler((_, __) => {
                         var path = button.ScriptPath;
                         RunScript(path);
                     });

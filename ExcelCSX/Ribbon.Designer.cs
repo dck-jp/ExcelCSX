@@ -51,6 +51,9 @@
             this.button4 = this.Factory.CreateRibbonButton();
             this.button5 = this.Factory.CreateRibbonButton();
             this.button6 = this.Factory.CreateRibbonButton();
+            this.button7 = this.Factory.CreateRibbonButton();
+            this.button8 = this.Factory.CreateRibbonButton();
+            this.button9 = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.groupShortcut.SuspendLayout();
@@ -142,6 +145,9 @@
             this.groupShortcut.Items.Add(this.button4);
             this.groupShortcut.Items.Add(this.button5);
             this.groupShortcut.Items.Add(this.button6);
+            this.groupShortcut.Items.Add(this.button7);
+            this.groupShortcut.Items.Add(this.button8);
+            this.groupShortcut.Items.Add(this.button9);
             this.groupShortcut.Label = "Shortcut";
             this.groupShortcut.Name = "groupShortcut";
             // 
@@ -174,6 +180,21 @@
             // 
             this.button6.Label = "button1";
             this.button6.Name = "button6";
+            // 
+            // button7
+            // 
+            this.button7.Label = "button7";
+            this.button7.Name = "button7";
+            // 
+            // button8
+            // 
+            this.button8.Label = "button8";
+            this.button8.Name = "button8";
+            // 
+            // button9
+            // 
+            this.button9.Label = "button9";
+            this.button9.Name = "button9";
             // 
             // Ribbon
             // 
@@ -209,6 +230,9 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button4;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button5;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button6;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button9;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button8;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button7;
     }
 
     partial class ThisRibbonCollection

@@ -22,6 +22,8 @@ namespace ExcelCSX
             {
                 metroListViewShortcutButtons.Items.Add(new ListViewItem(new[] { x.DisplayName, x.ScriptPath }));
             });
+
+            metroLabelVer.Text += Core.Version;
         }
 
         private void metroTextButtonBroseEditor_Click(object sender, EventArgs e)
