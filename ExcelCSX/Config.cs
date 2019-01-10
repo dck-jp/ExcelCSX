@@ -49,7 +49,18 @@ namespace ExcelCSX
         /// </summary>
         public void Save()
         {
-            Files.SaveXML<Config>(ConfigFilePath, this);
+            try
+            {
+                if (!File.Exists(ConfigFilePath))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(ConfigFilePath) + "\\");
+                }
+                Files.SaveXML<Config>(ConfigFilePath, this);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Configファイルの保存に失敗：" + e.ToString());
+            }
         }
         /// <summary>
         /// Config.xmlファイルの読み込み
