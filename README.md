@@ -1,40 +1,57 @@
-2019/04/22以降、このプロジェクトに関しては "開発休止" とさせていただきます。 つまり、今後は改善や新機能のご提案についてお応えできません。 バイナリについては停止をとりやめ、ソースコードのみ公開を継続します。
-※　社内ツールとして2019初頭まで利用していたため、ビルドは可能な"はず"です (無保証です)。
+# ExcelCSX
 
-もしかすれば、ふと余裕ができたときに、突然開発を再開するかもしれません。
-が、再開の可能性は低いため、改良を加えたくなった場合は、フォークしてください。
+**ExcelCSX** is an Excel add-in that enables executing **C# Scripts** directly inside Microsoft Excel.
+
+With ExcelCSX, you can automate and manipulate Excel workbooks using C# Script with the same convenience as VBA, while leveraging the power of the Roslyn scripting engine.
+
+For an introduction to using C# Script with Excel, refer to:
+
+- [Welcome to the Excel C# Script Tutorial!](http://mokumokucsharp.hateblo.jp/entry/2016/07/13/140602)
 
 ---
 
-# ExcelCSX
+## Project Status
 
-ExcelCSXは、Microsoft Excel上で C# Scriptを実行可能とするExcelアドインです。
+As of **2019-04-22**, this project is **no longer under active development**.  
+No further improvements or new feature requests will be accepted.
 
-ExcelCSXを使うことで、VBAのような手軽さで、C# Scriptを用いてExcelを操作できるようになります。
+Binary distributions have been discontinued; however, **the source code remains available**.
 
-導入方法や使い方、C# ScriptでExcelを操作する方法について詳しくは、
+> **Note:**  
+> The build process requires a code-signing certificate.  
+> Please generate and use a self-signed certificate if needed.
 
-- [Excel C# Script入門講座へようこそ！](http://mokumokucsharp.hateblo.jp/entry/2016/07/13/140602)
+You may freely use this project as:
 
-をご参照下さい。
+- A reference implementation for embedding DSL runtimes into Excel  
+- A sample for using Roslyn Scripting within Office add-ins
 
-## このプロジェクトについて
+---
 
-Excel上でC# Scriptを実行するにあたっては、[Roslyn for Scripting](https://github.com/dotnet/roslyn/wiki/Scripting-API-Samples)を用いています。
+## How It Works
 
-C# Scriptの記法については、[Roslyn for Scripting](https://github.com/dotnet/roslyn/wiki/Scripting-API-Samples)に準拠しています。
+ExcelCSX uses **Roslyn for Scripting** to evaluate and run C# Script within Excel.
 
-ExcelCSXでは、より手軽にExcelを操作できるように若干の機能の追加（デフォルト状態での参照ライブラリの追加と、Excel.Applicationオブジェクトへの簡易アクセス手段の追加）を施しています。
+The scripting syntax follows the conventions of Roslyn’s official scripting APIs:  
+<https://github.com/dotnet/roslyn/wiki/Scripting-API-Samples>
 
-## ExcelCSXを動作させるための必須要件
+To make Excel manipulation easier, ExcelCSX provides several convenience features:
 
-- Windows7以降
-- .NET Framework 4.6以上
-- Excel2007以降
+- Additional default reference assemblies  
+- Simplified access to the `Excel.Application` object
 
-## ライセンス
+---
 
-- [The MIT License (MIT)](https://github.com/dck-jp/ExcelCSX/blob/master/LICENSE.txt)
+## Requirements
 
-MIT ライセンスの下で公開する、オープンソース / フリーソフトウェアです。
+- Windows 7 or later  
+- .NET Framework 4.6 or later  
+- Microsoft Excel 2007 or later
 
+---
+
+## License
+
+- [MIT License](https://github.com/dck-jp/ExcelCSX/blob/master/LICENSE.txt)
+
+This software is released under the MIT License as open-source, free software.
